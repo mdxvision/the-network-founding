@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Network — Founding Team</title>
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.page { max-width: 1080px; margin: 0 auto; padding: 0 40px 100px; }
+
+/* ─────────────────────────────────────────
+   DOCUMENT HEADER
+───────────────────────────────────────── */
+
+.doc-header {
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  padding: 64px 64px 52px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.badge-confidential {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #6e6e73;
+  padding: 6px 14px;
+  border: 1px solid #d2d2d7;
+  border-radius: 100px;
+}
+
+.badge-patent {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+}
+
+.doc-title {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 0.95;
+  color: #1d1d1f;
+  margin-bottom: 20px;
+}
+
+.doc-title em { font-style: normal; color: #4338CA; }
+
+.doc-desc {
+  font-size: 19px;
+  color: #6e6e73;
+  font-weight: 400;
+  max-width: 560px;
+  line-height: 1.5;
+  margin-bottom: 48px;
+  letter-spacing: -0.2px;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 48px;
+  padding-top: 28px;
+  border-top: 1px solid #f0f0f2;
+}
+
+.meta-field { display: flex; flex-direction: column; gap: 4px; }
+
+.meta-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #c7c7cc;
+}
+
+.meta-val {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1d1d1f;
+}
+
+/* ─────────────────────────────────────────
+   STATS CARD
+───────────────────────────────────────── */
+
+.stats-card {
+  background: #fff;
+  border-radius: 18px;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.stat {
+  padding: 32px 32px 28px;
+  border-right: 1px solid #f0f0f2;
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-n {
+  display: block;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  color: #1d1d1f;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-l {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+}
+
+/* ─────────────────────────────────────────
+   WHITE CONTENT CARD (mission, how-it-works)
+───────────────────────────────────────── */
+
+.content-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 48px 64px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.content-card-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.content-card-headline {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  color: #1d1d1f;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.content-card-headline em { font-style: normal; color: #4338CA; }
+
+.content-card-body {
+  font-size: 15px;
+  color: #6e6e73;
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 36px;
+}
+
+/* ── Pillars ── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.pillar {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.pillar-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #4338CA;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.pillar-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.pillar-desc {
+  font-size: 12px;
+  color: #aeaeb2;
+  line-height: 1.6;
+}
+
+/* ── Steps ── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.step {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.step-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #4338CA;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.step-desc {
+  font-size: 12px;
+  color: #aeaeb2;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   SECTION HEADER
+───────────────────────────────────────── */
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 20px;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+  white-space: nowrap;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: #e5e5ea;
+}
+
+/* ─────────────────────────────────────────
+   MEMBER CARD
+───────────────────────────────────────── */
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 36px;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.card-identity { display: flex; align-items: center; gap: 18px; }
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #1d1d1f;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-name {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1d1d1f;
+}
+
+.card-title {
+  font-size: 13px;
+  color: #aeaeb2;
+  margin-top: 2px;
+}
+
+.card-role {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c7c7cc;
+}
+
+.card-body { padding: 28px 36px; }
+
+.group { margin-bottom: 24px; }
+.group:last-child { margin-bottom: 0; }
+
+.group-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #c7c7cc;
+  margin-bottom: 12px;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.tag {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1d1d1f;
+  padding: 7px 16px;
+  background: #f5f5f7;
+  border-radius: 100px;
+  line-height: 1.4;
+  letter-spacing: -0.1px;
+  transition: background 0.15s;
+}
+
+.tag:hover { background: #ebebed; }
+
+.tag sub {
+  font-size: 11px;
+  color: #aeaeb2;
+  vertical-align: baseline;
+  font-weight: 400;
+}
+
+.mark {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #4338CA;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.card-note {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: #f5f5f7;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #6e6e73;
+  line-height: 1.65;
+}
+
+.card-note strong { color: #1d1d1f; font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   COMING SOON CARD
+───────────────────────────────────────── */
+
+.card-soon .card-head { border-bottom: none; }
+
+.soon-body {
+  padding: 0 36px 28px;
+  font-size: 13px;
+  color: #c7c7cc;
+}
+
+/* ─────────────────────────────────────────
+   INTEL BLOCKS
+───────────────────────────────────────── */
+
+.intel-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.intel-card:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
+}
+
+.intel-source {
+  font-size: 11px;
+  color: #aeaeb2;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin-bottom: 12px;
+}
+
+.intel-title {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  color: #1d1d1f;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.intel-body {
+  font-size: 14px;
+  color: #6e6e73;
+  line-height: 1.75;
+}
+
+.intel-body strong { color: #1d1d1f; font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   GRID
+───────────────────────────────────────── */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+
+.doc-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 0 0;
+  margin-top: 48px;
+  border-top: 1px solid #e5e5ea;
+}
+
+.doc-footer span {
+  font-size: 12px;
+  color: #c7c7cc;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+
+@media (max-width: 780px) {
+  .page { padding: 0 16px 80px; }
+  .doc-header { padding: 40px 28px 36px; border-radius: 0 0 16px 16px; }
+  .doc-title { font-size: 40px; }
+  .doc-desc { font-size: 16px; }
+  .stats-card { grid-template-columns: repeat(2, 1fr); }
+  .doc-meta { flex-wrap: wrap; gap: 24px; }
+  .content-card { padding: 36px 28px; }
+  .pillars, .steps { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .card-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="doc-header">
+    <div class="header-top">
+      <span class="badge-confidential">Founding Members Only</span>
+      <span class="badge-patent">Patent Pending</span>
+    </div>
+
+    <h1 class="doc-title">The <em>Network</em></h1>
+    <p class="doc-desc">Welcome to the founding team. This is who we are, what we each bring, and how the system works. Everything in here was built by this room.</p>
+
+    <div class="doc-meta">
+      <div class="meta-field">
+        <span class="meta-label">Members</span>
+        <span class="meta-val">10 Founding</span>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Agents</span>
+        <span class="meta-val">@credit · @funding · @structure · @client · @lead · @add</span>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Updated</span>
+        <span class="meta-val">April 27, 2026</span>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Classification</span>
+        <span class="meta-val">Founding Members Only</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <div class="stats-card">
+    <div class="stat"><span class="stat-n">10</span><span class="stat-l">Founding Members</span></div>
+    <div class="stat"><span class="stat-n">6</span><span class="stat-l">Active Agents</span></div>
+    <div class="stat"><span class="stat-n">3</span><span class="stat-l">VA Agencies</span></div>
+    <div class="stat"><span class="stat-n">75+</span><span class="stat-l">Custom GPTs</span></div>
+  </div>
+
+  <!-- ── MISSION ── -->
+  <div class="content-card">
+    <span class="content-card-eyebrow">Why We Built This</span>
+    <h2 class="content-card-headline">The best intelligence in this industry, <em>organized</em> and working for everyone in this room.</h2>
+    <p class="content-card-body">For years the credit and funding space has been fractured. The real playbooks — the bureau intel, the lender sequences that actually work, the strategies that move the needle — lived in individual heads. It didn't scale. It didn't compound. The Network changes that. Everything each founding member brings gets fed into a shared intelligence layer. The agents draw from it in real time. Every operator who comes through benefits from what all of us know.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-num">01</span>
+        <div class="pillar-title">Feed and Eat</div>
+        <p class="pillar-desc">Contribution is access. What you bring to the knowledge base is what keeps your seat at the table. The more we contribute, the more powerful the system becomes for everyone.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">02</span>
+        <div class="pillar-title">Invisible Infrastructure</div>
+        <p class="pillar-desc">Operators never see the engine. They see outcomes — dispute letters, funding paths, case status, qualification scores. The platform stays invisible. The results don't.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">03</span>
+        <div class="pillar-title">Living Intelligence</div>
+        <p class="pillar-desc">Bureau tactics change. Lender criteria shift. The knowledge base is never finished — founding members keep it current. That's the ongoing contribution model.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOW IT WORKS ── -->
+  <div class="content-card">
+    <span class="content-card-eyebrow">How The Network Works</span>
+    <h2 class="content-card-headline">What operators experience when they come through your workspace.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">Step 01</span>
+        <div class="step-title">Operator Joins Slack</div>
+        <p class="step-desc">Every operator gets their own dedicated Slack workspace. Clean separation. No shared environments between clients.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">Step 02</span>
+        <div class="step-title">Agents Activate</div>
+        <p class="step-desc">@credit, @funding, @structure, @client, @lead, and @add are ready. Operators talk to agents — not software, not portals.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">Step 03</span>
+        <div class="step-title">Intelligence Runs</div>
+        <p class="step-desc">Agents pull from the shared knowledge base — real bureau intel, real lender sequences, real dispute playbooks. Built by this team.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">Step 04</span>
+        <div class="step-title">Outcomes Delivered</div>
+        <p class="step-desc">Dispute packages generated. Funding paths sequenced. Case status live. Everything delivered in Slack — nothing to install, nothing to learn.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CAPABILITIES ── -->
+  <div class="content-card">
+    <span class="content-card-eyebrow">What Operators Do</span>
+    <h2 class="content-card-headline">Two actions. That's the entire interface.</h2>
+    <p class="content-card-body">Operators don't log into platforms, fill out forms, or look anything up. They do two things inside Slack — and agents handle everything else.</p>
+  </div>
+
+  <!-- CHANNEL MODE: ASK QUESTIONS -->
+  <div class="content-card" style="margin-bottom: 12px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:6px;">
+      <div style="font-size:28px;font-weight:800;letter-spacing:-1px;color:#1d1d1f;line-height:1.1;">Ask Questions</div>
+      <div style="font-size:11px;color:#aeaeb2;font-weight:500;">Channel mode — any Slack channel</div>
+    </div>
+    <p style="font-size:14px;color:#6e6e73;line-height:1.7;margin-bottom:28px;">Operators ask agents directly in Slack. Bureau strategy, dispute approach, lender criteria, client qualification. The answer comes back grounded in the shared knowledge base — real intel, not guesses.</p>
+
+    <!-- Slack mockup: @credit channel exchange -->
+    <div style="background:#f0f0f5;border-radius:14px;padding:24px 28px;border:1px solid #e5e5ea;margin-bottom:16px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#aeaeb2;margin-bottom:18px;">#credit-strategy channel</div>
+
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#d2d2d7;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6e6e73;">M</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">Michael <span style="font-size:11px;font-weight:400;color:#aeaeb2;">10:14 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.6;"><strong style="color:#4338CA;">@credit</strong> client has a 3-year-old $2,400 medical collection on TU and EQ. Goal is mortgage qualification in 6 months. Best path?</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#4338CA;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">@c</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">@credit <span style="font-size:11px;font-weight:400;color:#aeaeb2;">10:14 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">For a sub-7-year medical collection under $5K with a mortgage goal, the sequence is: <strong style="color:#1d1d1f;">609 letter first on both bureaus</strong> — medical debt has lower verification rates, especially post-CFPB guidance. If it sticks, follow with a CFPB complaint citing §623(a)(1) failure to investigate. Don't pay-for-delete on this one — mortgage underwriters flag recent PFD settlements. Timeline fits your 6-month window if you move within the next 2 weeks.<br><br>Want me to generate the 609s for TU and EQ?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slack mockup: @funding channel exchange -->
+    <div style="background:#f0f0f5;border-radius:14px;padding:24px 28px;border:1px solid #e5e5ea;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#aeaeb2;margin-bottom:18px;">#funding-strategy channel</div>
+
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#d2d2d7;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6e6e73;">R</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">Ron <span style="font-size:11px;font-weight:400;color:#aeaeb2;">2:31 PM</span></div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.6;"><strong style="color:#4338CA;">@funding</strong> client is at 640 personal, LLC 2 years old, $8K/month revenue, no business credit file. What's available?</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#4338CA;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">@f</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">@funding <span style="font-size:11px;font-weight:400;color:#aeaeb2;">2:31 PM</span></div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">At 640 with no business credit file, personal credit is your only lever right now. <strong style="color:#1d1d1f;">Options:</strong> revenue-based lenders (Credibly, Libertas) will look at the $8K/month — they can move at 640 if deposits are consistent. No doc lines are off the table until you build business tradelines. Recommend: run 3 net-30 accounts this month (Uline, Quill, Grainger), recheck in 60 days. That unlocks a different lender tier entirely.<br><br>Want a full fundability gap analysis for this client?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DM MODE: CREATE DOCUMENTS -->
+  <div class="content-card">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:6px;">
+      <div style="font-size:28px;font-weight:800;letter-spacing:-1px;color:#1d1d1f;line-height:1.1;">Create Documents</div>
+      <div style="font-size:11px;color:#aeaeb2;font-weight:500;">DM mode — direct message to @credit</div>
+    </div>
+    <p style="font-size:14px;color:#6e6e73;line-height:1.7;margin-bottom:28px;">In a DM, @credit pulls the client's credit data, runs a per-bureau analysis, and generates real documents — 609 letters, FTC affidavits, CFPB complaints, dispute packages. The operator gives the client name. The agent handles everything else.</p>
+
+    <!-- Slack DM mockup -->
+    <div style="background:#f0f0f5;border-radius:14px;padding:24px 28px;border:1px solid #e5e5ea;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#aeaeb2;margin-bottom:18px;">DM with @credit</div>
+
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#d2d2d7;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6e6e73;">E</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">Erik <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:05 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;">Run Marcus Johnson</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#4338CA;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">@c</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">@credit <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:05 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">Pulling Marcus Johnson's credit profile...<br><br><strong style="color:#1d1d1f;">TransUnion:</strong> 2 collections ($2,400 medical — 2021, $780 utility — 2022), 1 late payment (Cap One — 30 days, 2023).<br><strong style="color:#1d1d1f;">Equifax:</strong> Same 2 collections. No late payments.<br><strong style="color:#1d1d1f;">Experian:</strong> Clean.<br><br>Goal on file: mortgage qualification. Timeline: 6 months.<br><br>Recommended: 609 letters for both collections on TU + EQ. CFPB complaint for the medical collection (§623 failure to verify). Dispute the Cap One late — within the 24-month window.<br><br>Generate all four documents?</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#d2d2d7;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6e6e73;">E</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">Erik <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:06 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;">Yes, generate all four.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#4338CA;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">@c</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">@credit <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:06 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">Done. Four documents generated for Marcus Johnson and logged to his case file.<br><br>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+              <span style="background:#fff;border:1px solid #e5e5ea;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#1d1d1f;">📄 609 Letter — TU Medical</span>
+              <span style="background:#fff;border:1px solid #e5e5ea;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#1d1d1f;">📄 609 Letter — EQ Medical</span>
+              <span style="background:#fff;border:1px solid #e5e5ea;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#1d1d1f;">📄 CFPB Complaint</span>
+              <span style="background:#fff;border:1px solid #e5e5ea;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#1d1d1f;">📄 Cap One Late Dispute</span>
+            </div>
+            <div style="margin-top:12px;font-size:12px;color:#aeaeb2;">30-day follow-up reminders set. Next check-in: May 27.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOUNDING TEAM ── -->
+  <div class="section">
+    <span class="section-title">The Founding Team</span>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Rafael -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-identity">
+        <div class="avatar">R</div>
+        <div>
+          <div class="card-name">Rafael Rodriguez</div>
+          <div class="card-title">BrightPath Ascend Group · Platform Owner</div>
+        </div>
+      </div>
+      <div class="card-role">Founder / Builder</div>
+    </div>
+    <div class="card-body">
+      <div class="group">
+        <div class="group-label">Core Platform</div>
+        <div class="tags">
+          <span class="tag">Credit restoration platform</span>
+          <span class="tag">Business funding platform</span>
+          <span class="tag">Credit Suite Ultimate White-Label</span>
+          <span class="tag">3 CRA API Access<span class="mark">Pending</span></span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Tradeline & Credit</div>
+        <div class="tags">
+          <span class="tag">Authorized Users (AUs)</span>
+          <span class="tag">Business tradelines</span>
+          <span class="tag">Personal tradelines</span>
+          <span class="tag">Data furnishers</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Advanced Strategies</div>
+        <div class="tags">
+          <span class="tag">Zombie debt plays</span>
+          <span class="tag">Sovereign debt relief</span>
+          <span class="tag">Infinite banking</span>
+          <span class="tag">Car title plays</span>
+          <span class="tag">1099 OID strategy</span>
+          <span class="tag">Vehicle discharge</span>
+          <span class="tag">Foreign trusts</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Data & Leads</div>
+        <div class="tags">
+          <span class="tag">Skool scraper</span>
+          <span class="tag">Discord scraper</span>
+          <span class="tag">Telegram scraper</span>
+          <span class="tag">CreditBoards connection</span>
+          <span class="tag">myFICO access</span>
+          <span class="tag">DailyFunder leads</span>
+          <span class="tag">30K utilization loan contact</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Partner Access</div>
+        <div class="tags">
+          <span class="tag">Amex connects</span>
+          <span class="tag">Vacation packages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Michael -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-identity">
+        <div class="avatar">M</div>
+        <div>
+          <div class="card-name">Michael</div>
+          <div class="card-title">4QStrategy · Business Credit Specialist</div>
+        </div>
+      </div>
+      <div class="card-role">Business Credit</div>
+    </div>
+    <div class="card-body">
+      <div class="group">
+        <div class="group-label">Brand & Community</div>
+        <div class="tags">
+          <span class="tag">4QStrategy methodology</span>
+          <span class="tag">Skool communities</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Credit Assets</div>
+        <div class="tags">
+          <span class="tag">Primary tradelines — EQ + TU</span>
+          <span class="tag">Aged corps — MN, 3yr min <sub>$500</sub></span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Intelligence</div>
+        <div class="tags">
+          <span class="tag">Notion DB — Bank SOPs<span class="mark">Knowledge Base</span></span>
+          <span class="tag">Revenue datapoints</span>
+          <span class="tag">BRM scripts</span>
+          <span class="tag">NavyFed approval script</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ron Edwards -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-identity">
+        <div class="avatar">RE</div>
+        <div>
+          <div class="card-name">Ron Edwards</div>
+          <div class="card-title">Credit Union Specialist · Marketing Strategist</div>
+        </div>
+      </div>
+      <div class="card-role">Marketing / Funding</div>
+    </div>
+    <div class="card-body">
+      <div class="group">
+        <div class="group-label">Funding Access</div>
+        <div class="tags">
+          <span class="tag">Credit union vault</span>
+          <span class="tag">Personal loan plays</span>
+          <span class="tag">4–5 business lines per bank <sub>$50K–$150K</sub></span>
+          <span class="tag">Aged corps <sub>$500</sub></span>
+          <span class="tag">Dealership auto conversion</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Document Production</div>
+        <div class="tags">
+          <span class="tag">Tax returns prep</span>
+          <span class="tag">Pay stubs</span>
+          <span class="tag">Bank statements</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">VA & Operations</div>
+        <div class="tags">
+          <span class="tag">VA agency — credit law trained</span>
+          <span class="tag">VA for Skool management</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Marketing & Growth</div>
+        <div class="tags">
+          <span class="tag">Follower ad strategy <sub>40K–60K reach</sub></span>
+          <span class="tag">Book-a-call funnel</span>
+          <span class="tag">Webinar setup</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Bureau Intelligence</div>
+        <div class="tags">
+          <span class="tag">Equifax Work Number freeze<span class="mark">Key Intel</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Erik -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-identity">
+        <div class="avatar">EH</div>
+        <div>
+          <div class="card-name">Erik</div>
+          <div class="card-title">HowToCredit · howtocredit.info</div>
+        </div>
+      </div>
+      <div class="card-role">Tech / Credit</div>
+    </div>
+    <div class="card-body">
+      <div class="group">
+        <div class="group-label">Brand & Audience</div>
+        <div class="tags">
+          <span class="tag">HowToCredit brand + audience</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Credit Assets</div>
+        <div class="tags">
+          <span class="tag">Primary tradelines — up to $100K</span>
+          <span class="tag">Aged corps — full LLC buildout</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Operations & Tech</div>
+        <div class="tags">
+          <span class="tag">VA agency — English-speaking <sub>SA + Philippines</sub></span>
+          <span class="tag">Data scraping</span>
+          <span class="tag">Marketing agency w/ AI integration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DeVon -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-identity">
+        <div class="avatar">DV</div>
+        <div>
+          <div class="card-name">DeVon</div>
+          <div class="card-title">AI Integration Specialist · Tradeline Company Owner</div>
+        </div>
+      </div>
+      <div class="card-role">AI / Credit / Leads</div>
+    </div>
+    <div class="card-body">
+      <div class="group">
+        <div class="group-label">Credit Infrastructure</div>
+        <div class="tags">
+          <span class="tag">Tradeline company — all 3 bureaus<span class="mark">Tri-Bureau</span></span>
+          <span class="tag">Network of tradeline owners</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Lead Generation</div>
+        <div class="tags">
+          <span class="tag">Funding leads — active</span>
+          <span class="tag">Credit leads — active</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">AI Capabilities</div>
+        <div class="tags">
+          <span class="tag">75 custom GPTs</span>
+          <span class="tag">Microapp development</span>
+          <span class="tag">AI consulting practice</span>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-label">Team & Revenue</div>
+        <div class="tags">
+          <span class="tag">11 employees — credit side</span>
+          <span class="tag">Webinar selling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── JOINING SOON ── -->
+  <div class="section">
+    <span class="section-title">Joining Soon</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-soon">
+      <div class="card-head">
+        <div class="card-identity"><div class="avatar">Z</div><div><div class="card-name">Zac</div><div class="card-title">Founding Member</div></div></div>
+        <div class="card-role">Profile Coming Soon</div>
+      </div>
+      <div class="soon-body">Contribution profile in progress.</div>
+    </div>
+    <div class="card card-soon">
+      <div class="card-head">
+        <div class="card-identity"><div class="avatar">J</div><div><div class="card-name">Jeff</div><div class="card-title">Founding Member</div></div></div>
+        <div class="card-role">Profile Coming Soon</div>
+      </div>
+      <div class="soon-body">Contribution profile in progress.</div>
+    </div>
+    <div class="card card-soon">
+      <div class="card-head">
+        <div class="card-identity"><div class="avatar">G</div><div><div class="card-name">Gabe</div><div class="card-title">Founding Member</div></div></div>
+        <div class="card-role">Profile Coming Soon</div>
+      </div>
+      <div class="soon-body">Contribution profile in progress.</div>
+    </div>
+    <div class="card card-soon">
+      <div class="card-head">
+        <div class="card-identity"><div class="avatar">JO</div><div><div class="card-name">Jose</div><div class="card-title">Founding Member</div></div></div>
+        <div class="card-role">Profile Coming Soon</div>
+      </div>
+      <div class="soon-body">Contribution profile in progress.</div>
+    </div>
+    <div class="card card-soon">
+      <div class="card-head">
+        <div class="card-identity"><div class="avatar">S</div><div><div class="card-name">Sam</div><div class="card-title">Founding Member</div></div></div>
+        <div class="card-role">Profile Coming Soon</div>
+      </div>
+      <div class="soon-body">Contribution profile in progress.</div>
+    </div>
+  </div>
+
+  <!-- ── SHARED INTELLIGENCE ── -->
+  <div class="section">
+    <span class="section-title">Shared Intelligence — What We Know Right Now</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="intel-card">
+    <div class="intel-source">John Rivero @ TransUnion · April 22</div>
+    <div class="intel-title">TU Flagging FTC Reports Without Police Reports</div>
+    <p class="intel-body">TransUnion is now <strong>flagging and rejecting FTC identity theft reports submitted without an attached police report.</strong> The FTC-only workflow is losing effectiveness with TU. Every submission targeting TransUnion must now include police report documentation. Update your workflows now.</p>
+  </div>
+
+  <div class="intel-card">
+    <div class="intel-source">April 22 Founding Call</div>
+    <div class="intel-title">Bureau Squeeze — Narrowing Dispute Eligibility</div>
+    <p class="intel-body">All three bureaus are <strong>actively reducing which items qualify for dispute</strong> and limiting available pathways per item. This is coordinated. The Network's edge is staying ahead of what still works. <strong>Your ongoing intelligence contributions are what keep this sharp</strong> — bureau tactic updates are a mandatory contribution cadence.</p>
+  </div>
+
+  <div class="intel-card">
+    <div class="intel-source">Ron Edwards · April Calls</div>
+    <div class="intel-title">Equifax Work Number Freeze</div>
+    <p class="intel-body">A specific technique for <strong>freezing the Equifax Work Number</strong> — Equifax's employment income verification database — at the bureau level. Prevents lenders from pulling income data during the application process. Highly relevant for clients with income verification situations in lender applications.</p>
+  </div>
+
+  <!-- ── CONTRIBUTION MODEL ── -->
+  <div class="section">
+    <span class="section-title">The Contribution Model</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="intel-card">
+      <div class="intel-title">Feed and Eat</div>
+      <p class="intel-body">Access to The Network is earned through contribution. What you bring to the knowledge base — intelligence, playbooks, lender data, bureau updates — is what maintains your seat. The system gets stronger every time a founding member adds to it. <strong>Every contribution compounds for the whole group.</strong></p>
+    </div>
+
+    <div class="intel-card">
+      <div class="intel-title">If It's in Your Head, It Belongs Here</div>
+      <p class="intel-body">Bureau tactic updates. Lender approvals and criteria. Dispute outcomes. Funding sequences that worked. Scripts that convert. Any intelligence that would take another operator months to learn. <strong>That's what goes in.</strong></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="doc-footer">
+    <span>The Network — Founding Team · For Founding Members Only</span>
+    <span>Patent Pending · April 27, 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
