@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Network — Collective Lead Flow</title>
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.page { max-width: 900px; margin: 0 auto; padding: 0 32px 100px; }
+
+/* ── HEADER ── */
+.doc-header {
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  padding: 56px 64px 48px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4338CA;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #4338CA;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.doc-title {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  line-height: 0.95;
+  color: #1d1d1f;
+  margin-bottom: 20px;
+}
+
+.doc-title em {
+  font-style: normal;
+  color: #4338CA;
+}
+
+.doc-sub {
+  font-size: 16px;
+  color: #6e6e73;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* ── SURVEY BLOCK ── */
+.survey-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px 52px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.survey-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+}
+
+.survey-note {
+  font-size: 13px;
+  color: #aeaeb2;
+  margin-bottom: 32px;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.question {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.q-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f5f5f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4338CA;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.q-body {
+  flex: 1;
+}
+
+.q-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 4px;
+}
+
+.q-options {
+  font-size: 13px;
+  color: #6e6e73;
+}
+
+/* ── FLOW STEPS ── */
+.flow-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+.flow-step {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.flow-step:not(:last-child) .step-line {
+  display: block;
+}
+
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48px;
+  flex-shrink: 0;
+}
+
+.step-num {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #4338CA;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.step-num.grey {
+  background: #f5f5f7;
+  color: #aeaeb2;
+}
+
+.step-line {
+  width: 2px;
+  flex: 1;
+  background: #e8e8ed;
+  min-height: 32px;
+  display: none;
+}
+
+.step-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.step-body {
+  font-size: 14px;
+  color: #3c3c43;
+  line-height: 1.7;
+}
+
+.step-body strong {
+  color: #1d1d1f;
+  font-weight: 600;
+}
+
+.step-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #4338CA;
+  background: #eef2ff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+/* ── SPLIT LANES ── */
+.lanes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.lane {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+
+.lane-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.lane-label.green { color: #34c759; }
+.lane-label.amber { color: #ff9f0a; }
+
+.lane-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1d1d1f;
+  margin-bottom: 10px;
+}
+
+.lane-body {
+  font-size: 14px;
+  color: #3c3c43;
+  line-height: 1.75;
+}
+
+.lane-body strong {
+  color: #1d1d1f;
+  font-weight: 600;
+}
+
+/* ── FINANCING OPTIONS ── */
+.financing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.finance-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+
+.finance-rank {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+  margin-bottom: 8px;
+}
+
+.finance-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+
+.finance-body {
+  font-size: 13px;
+  color: #6e6e73;
+  line-height: 1.7;
+}
+
+.finance-tag {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.finance-tag.best { background: #e8fff0; color: #34c759; }
+.finance-tag.mid  { background: #fff4e0; color: #ff9f0a; }
+.finance-tag.last { background: #f5f5f7; color: #aeaeb2; }
+
+/* ── DEAD LEAD ── */
+.dead-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.dead-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f5f5f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.dead-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 4px;
+}
+
+.dead-body {
+  font-size: 13px;
+  color: #6e6e73;
+  line-height: 1.7;
+}
+
+/* ── MEMBER PROFILE BLOCK ── */
+.profile-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 48px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+}
+
+.profile-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #1d1d1f;
+  margin-bottom: 20px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-item-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+}
+
+.profile-item-value {
+  font-size: 13px;
+  color: #3c3c43;
+  font-weight: 500;
+}
+
+/* ── RULE CARD ── */
+.rule-card {
+  background: #4338CA;
+  border-radius: 20px;
+  padding: 40px 48px;
+  margin-bottom: 24px;
+}
+
+.rule-card .rule-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+}
+
+.rule-card .rule-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8ed;
+  display: flex;
+  justify-content: space-between;
+}
+
+.doc-footer span {
+  font-size: 11px;
+  color: #c7c7cc;
+  font-weight: 500;
+}
+
+@media (max-width: 680px) {
+  .lanes { grid-template-columns: 1fr; }
+  .financing-grid { grid-template-columns: 1fr; }
+  .profile-grid { grid-template-columns: 1fr 1fr; }
+  .doc-header { padding: 40px 28px; }
+  .doc-title { font-size: 36px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="header-top">
+      <span class="brand">The Network</span>
+      <span class="badge">Founding Members</span>
+    </div>
+    <h1 class="doc-title">The <em>Collective</em><br>Lead Flow</h1>
+    <p class="doc-sub">One pool. Ten members. Every lead that comes in through a collective campaign gets qualified, routed, and worked using this structure — no exceptions.</p>
+  </div>
+
+  <!-- SURVEY -->
+  <div class="survey-card">
+    <span class="section-label">Step 1 — Qualifier Survey</span>
+    <div class="survey-title">Six Questions. Full Picture.</div>
+    <p class="survey-note">Every lead fills this out before they reach a member. By the time you get them, you already know everything you need.</p>
+
+    <div class="questions">
+
+      <div class="question">
+        <div class="q-num">1</div>
+        <div class="q-body">
+          <div class="q-text">What do you need help with?</div>
+          <div class="q-options">Credit · Funding · Both</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">2</div>
+        <div class="q-body">
+          <div class="q-text">How would you describe your credit right now?</div>
+          <div class="q-options">Good · Fair · Poor</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">3</div>
+        <div class="q-body">
+          <div class="q-text">What is your monthly income?</div>
+          <div class="q-options">Dollar range</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">4</div>
+        <div class="q-body">
+          <div class="q-text">What are your total monthly debt obligations?</div>
+          <div class="q-options">Dollar range</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">5</div>
+        <div class="q-body">
+          <div class="q-text">Do you have budget available to invest in this right now?</div>
+          <div class="q-options">Yes, I'm ready · No, I need help with that too</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">6</div>
+        <div class="q-body">
+          <div class="q-text">Are you looking for personal help, business help, or both?</div>
+          <div class="q-options">Personal · Business · Both</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROUTING -->
+  <div style="margin-bottom: 16px;">
+    <span class="section-label">Step 2 — Routing</span>
+  </div>
+
+  <div class="lanes">
+
+    <div class="lane">
+      <div class="lane-label green">Lane 1 — Has Budget</div>
+      <div class="lane-title">Direct to Member</div>
+      <div class="lane-body">Lead answered yes to budget. They go straight into the rotation. <strong>Next member in line gets the full lead profile automatically.</strong> No delay, no decision, no manual step.</div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label amber">Lane 2 — No Budget</div>
+      <div class="lane-title">Financing Path</div>
+      <div class="lane-body">Lead needs help covering the cost. <strong>Don't drop them.</strong> Based on their credit score and monthly income vs debt, they get routed to the right financing option below.</div>
+    </div>
+
+  </div>
+
+  <!-- FINANCING OPTIONS -->
+  <div style="margin-bottom: 16px;">
+    <span class="section-label">Lane 2 — Financing Options</span>
+  </div>
+
+  <div class="financing-grid">
+
+    <div class="finance-card">
+      <div class="finance-rank">Option 1</div>
+      <div class="finance-name">CoachFinancing</div>
+      <div class="finance-body">Third-party lender covers the service cost. Member gets paid upfront. Client repays the lender in installments. Best outcome for the member — zero risk, immediate payment.</div>
+      <span class="finance-tag best">Member paid upfront</span>
+    </div>
+
+    <div class="finance-card">
+      <div class="finance-rank">Option 2</div>
+      <div class="finance-name">Fanbasis</div>
+      <div class="finance-body">Buy Now Pay Later built into the platform. Client splits the cost into payments without a traditional loan. Score and charge amount determine eligibility.</div>
+      <span class="finance-tag mid">BNPL</span>
+    </div>
+
+    <div class="finance-card">
+      <div class="finance-rank">Option 3</div>
+      <div class="finance-name">Credee</div>
+      <div class="finance-body">Member creates an in-house payment plan directly with the client. Based on what their income vs debt shows they can afford monthly. No third-party approval needed — member assumes the plan.</div>
+      <span class="finance-tag last">In-house plan</span>
+    </div>
+
+  </div>
+
+  <!-- DEAD LEAD -->
+  <div class="dead-card">
+    <div class="dead-icon">⏳</div>
+    <div>
+      <div class="dead-title">Doesn't Qualify for Any Path</div>
+      <div class="dead-body">If the income vs debt math doesn't support any payment structure right now, the lead is not dropped — they go into a future follow-up sequence. No hard no. Timing is the only issue.</div>
+    </div>
+  </div>
+
+  <!-- LEAD PROFILE -->
+  <div class="profile-card">
+    <span class="section-label">Step 3 — What the Member Receives</span>
+    <div class="profile-title">Full Lead Profile — Delivered on Assignment</div>
+    <div class="profile-grid">
+      <div class="profile-item">
+        <span class="profile-item-label">Name + Contact</span>
+        <span class="profile-item-value">Full name, phone, email</span>
+      </div>
+      <div class="profile-item">
+        <span class="profile-item-label">Situation</span>
+        <span class="profile-item-value">Credit / Funding / Both</span>
+      </div>
+      <div class="profile-item">
+        <span class="profile-item-label">Credit Standing</span>
+        <span class="profile-item-value">Good / Fair / Poor</span>
+      </div>
+      <div class="profile-item">
+        <span class="profile-item-label">Monthly Income</span>
+        <span class="profile-item-value">Reported range</span>
+      </div>
+      <div class="profile-item">
+        <span class="profile-item-label">Monthly Debt</span>
+        <span class="profile-item-value">Reported obligations</span>
+      </div>
+      <div class="profile-item">
+        <span class="profile-item-label">Budget Status</span>
+        <span class="profile-item-value">Ready / Financing path</span>
+      </div>
+      <div class="profile-item">
+        <span class="profile-item-label">Focus</span>
+        <span class="profile-item-value">Personal / Business / Both</span>
+      </div>
+      <div class="profile-item">
+        <span class="profile-item-label">Financing Route</span>
+        <span class="profile-item-value">If applicable</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROTATION RULE -->
+  <div class="rule-card">
+    <div class="rule-label">The Rotation</div>
+    <div class="rule-text">All 10 members. One pool. Leads rotate in order — no picking, no claiming, no manual assignment. When a lead submits the survey, the next member in rotation gets the profile automatically. Equal distribution, zero delay.</div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div class="survey-card" style="margin-bottom: 0;">
+    <span class="section-label">Step 4 — Outcome</span>
+    <div class="survey-title">Close or Re-Route</div>
+    <p class="survey-note" style="margin-bottom: 24px;">Member works the lead. One of two outcomes.</p>
+
+    <div class="questions">
+      <div class="question">
+        <div class="q-num" style="background:#e8fff0; color:#34c759;">✓</div>
+        <div class="q-body">
+          <div class="q-text">Closed</div>
+          <div class="q-options">Service begins. Member reports what worked back to the brain — script, objection handled, financing option used. That intel feeds the whole group.</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num" style="background:#f5f5f7; color:#aeaeb2;">→</div>
+        <div class="q-body">
+          <div class="q-text">Not Closed</div>
+          <div class="q-options">Lead re-routes based on credit score and service charge. Thresholds to be defined. Lead does not die — it moves.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>The Network — Collective Lead Flow · Founding Members Only</span>
+    <span>April 2026</span>
+  </div>
+
+</div>
+
+</body>
+</html>
