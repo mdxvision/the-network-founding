@@ -466,6 +466,32 @@ body {
   font-weight: 500;
 }
 
+/* ── SURVEY SECTION LABELS ── */
+.survey-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #4338CA;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cinderella-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: #eef2ff;
+  color: #4338CA;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
 @media (max-width: 680px) {
   .lanes { grid-template-columns: 1fr; }
   .financing-grid { grid-template-columns: 1fr; }
@@ -493,9 +519,11 @@ body {
   <!-- SURVEY -->
   <div class="survey-card">
     <span class="section-label">Step 1 — Qualifier Survey</span>
-    <div class="survey-title">Six Questions. Full Picture.</div>
-    <p class="survey-note">Every lead fills this out before they reach a member. By the time you get them, you already know everything you need.</p>
+    <div class="survey-title">Three Sections. Full Picture.</div>
+    <p class="survey-note">Every lead fills this out before they reach a member. By the time you get them, you already know everything you need. Leads who selected Funding or Both complete all three sections.</p>
 
+    <!-- SECTION A -->
+    <div class="survey-section-label">Section A — Your Credit Situation</div>
     <div class="questions">
 
       <div class="question">
@@ -509,29 +537,83 @@ body {
       <div class="question">
         <div class="q-num">2</div>
         <div class="q-body">
-          <div class="q-text">How would you describe your credit right now?</div>
-          <div class="q-options">Good · Fair · Poor</div>
+          <div class="q-text">What is your approximate credit score?</div>
+          <div class="q-options">Exceptional 800–850 · Very Good 740–799 · Good 670–739 · Fair 580–669 · Poor 300–579 · I don't know</div>
         </div>
       </div>
 
       <div class="question">
         <div class="q-num">3</div>
         <div class="q-body">
-          <div class="q-text">What is your monthly income?</div>
-          <div class="q-options">Dollar range</div>
+          <div class="q-text">Do you have any open collections or charge-offs?</div>
+          <div class="q-options">Yes · No · Not sure</div>
         </div>
       </div>
 
       <div class="question">
         <div class="q-num">4</div>
         <div class="q-body">
-          <div class="q-text">What are your total monthly debt obligations?</div>
-          <div class="q-options">Dollar range</div>
+          <div class="q-text">Have you ever filed for bankruptcy?</div>
+          <div class="q-options">Yes · No</div>
         </div>
       </div>
 
       <div class="question">
         <div class="q-num">5</div>
+        <div class="q-body">
+          <div class="q-text">How many negative items are on your credit report?</div>
+          <div class="q-options">1–3 · 4–7 · 8 or more · Not sure</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">6</div>
+        <div class="q-body">
+          <div class="q-text">What is your primary goal?</div>
+          <div class="q-options">Raise my credit score · Remove negative items · Qualify for a mortgage · Get business funding · All of the above</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION B -->
+    <div class="survey-section-label" style="margin-top: 32px;">Section B — About You</div>
+    <div class="questions">
+
+      <div class="question">
+        <div class="q-num">7</div>
+        <div class="q-body">
+          <div class="q-text">What is your monthly income?</div>
+          <div class="q-options">Under $2K · $2K–$4K · $4K–$7K · $7K–$10K · $10K+</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">8</div>
+        <div class="q-body">
+          <div class="q-text">What are your total monthly debt obligations?</div>
+          <div class="q-options">Under $500 · $500–$1K · $1K–$2K · $2K–$3.5K · $3.5K+</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">9</div>
+        <div class="q-body">
+          <div class="q-text">What is your employment status?</div>
+          <div class="q-options">Employed (W-2) · Self-employed (1099) · Business owner · Unemployed</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">10</div>
+        <div class="q-body">
+          <div class="q-text">What state are you located in?</div>
+          <div class="q-options">State</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">11</div>
         <div class="q-body">
           <div class="q-text">Do you have budget available to invest in this right now?</div>
           <div class="q-options">Yes, I'm ready · No, I need help with that too</div>
@@ -539,10 +621,144 @@ body {
       </div>
 
       <div class="question">
-        <div class="q-num">6</div>
+        <div class="q-num">12</div>
         <div class="q-body">
-          <div class="q-text">Are you looking for personal help, business help, or both?</div>
-          <div class="q-options">Personal · Business · Both</div>
+          <div class="q-text">What is your timeline?</div>
+          <div class="q-options">ASAP · 1–3 months · 3–6 months · Just exploring</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">13</div>
+        <div class="q-body">
+          <div class="q-text">How did you hear about us?</div>
+          <div class="q-options">Social media · Referral · Influencer · Other</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION C -->
+    <div class="survey-section-label cinderella" style="margin-top: 32px;">Section C — Business &amp; Funding Profile <span class="cinderella-tag">Funding / Both only</span></div>
+    <div class="questions">
+
+      <div class="question">
+        <div class="q-num">14</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a registered business entity?</div>
+          <div class="q-options">Yes · No · In progress</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">15</div>
+        <div class="q-body">
+          <div class="q-text">What type of entity?</div>
+          <div class="q-options">LLC · S-Corp · C-Corp · Sole Proprietor · Other</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">16</div>
+        <div class="q-body">
+          <div class="q-text">How long has the business been established?</div>
+          <div class="q-options">Under 6 months · 6–12 months · 1–2 years · 2+ years</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">17</div>
+        <div class="q-body">
+          <div class="q-text">Do you have an EIN (Employer Identification Number)?</div>
+          <div class="q-options">Yes · No · Not sure what that is</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">18</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a dedicated business bank account?</div>
+          <div class="q-options">Yes · No</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">19</div>
+        <div class="q-body">
+          <div class="q-text">If yes, how long has that account been open?</div>
+          <div class="q-options">Under 3 months · 3–6 months · 6–12 months · 1+ year</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">20</div>
+        <div class="q-body">
+          <div class="q-text">What is your average monthly business revenue?</div>
+          <div class="q-options">$0 (pre-revenue) · $1–$5K · $5K–$10K · $10K–$25K · $25K+</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">21</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a D-U-N-S number?</div>
+          <div class="q-options">Yes · No · What's that?</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">22</div>
+        <div class="q-body">
+          <div class="q-text">Is your business address a commercial address (not a home address)?</div>
+          <div class="q-options">Yes, commercial · No, home address · Virtual office</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">23</div>
+        <div class="q-body">
+          <div class="q-text">Is your business phone number listed in 411 / online directories?</div>
+          <div class="q-options">Yes · No · Not sure</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">24</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a business website?</div>
+          <div class="q-options">Yes · No · In progress</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">25</div>
+        <div class="q-body">
+          <div class="q-text">Do you have any business credit accounts or net-30 trade lines?</div>
+          <div class="q-options">Yes · No · Not sure</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">26</div>
+        <div class="q-body">
+          <div class="q-text">Do you have any business credit cards?</div>
+          <div class="q-options">Yes · No</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">27</div>
+        <div class="q-body">
+          <div class="q-text">How much funding are you looking for?</div>
+          <div class="q-options">$5K–$25K · $25K–$50K · $50K–$100K · $100K–$250K · $250K+</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-num">28</div>
+        <div class="q-body">
+          <div class="q-text">What type of funding are you looking for?</div>
+          <div class="q-options">Business line of credit · Term loan · Equipment financing · SBA loan · Not sure yet</div>
         </div>
       </div>
 
