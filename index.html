@@ -675,35 +675,76 @@ body {
     <div style="background:#f0f0f5;border-radius:14px;padding:24px 28px;border:1px solid #e5e5ea;">
       <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#aeaeb2;margin-bottom:18px;">DM with @credit</div>
 
+      <!-- Step 1: Operator drops the credit report -->
       <div style="display:flex;gap:12px;margin-bottom:18px;">
         <div style="width:32px;height:32px;border-radius:8px;background:#d2d2d7;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6e6e73;">E</div>
         <div>
           <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">Erik <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:05 AM</span></div>
-          <div style="font-size:13px;color:#3c3c43;">Run Marcus Johnson</div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.6;">Marcus Johnson — dropping his report.
+            <div style="margin-top:10px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5ea;border-radius:10px;padding:10px 14px;max-width:260px;">
+              <div style="font-size:22px;">📎</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#1d1d1f;">MarcusJohnson_CreditReport.pdf</div>
+                <div style="font-size:11px;color:#aeaeb2;">3-bureau · 14 pages</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- Step 2: @credit asks if they want analysis -->
       <div style="display:flex;gap:12px;margin-bottom:18px;">
         <div style="width:32px;height:32px;border-radius:8px;background:#4338CA;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">@c</div>
         <div>
           <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">@credit <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:05 AM</span></div>
-          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">Pulling Marcus Johnson's credit profile...<br><br><strong style="color:#1d1d1f;">TransUnion:</strong> 2 collections ($2,400 medical — 2021, $780 utility — 2022), 1 late payment (Cap One — 30 days, 2023).<br><strong style="color:#1d1d1f;">Equifax:</strong> Same 2 collections. No late payments.<br><strong style="color:#1d1d1f;">Experian:</strong> Clean.<br><br>Goal on file: mortgage qualification. Timeline: 6 months.<br><br>Recommended: 609 letters for both collections on TU + EQ. CFPB complaint for the medical collection (§623 failure to verify). Dispute the Cap One late — within the 24-month window.<br><br>Generate all four documents?</div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">Got Marcus Johnson's report. Want me to analyze it first, or do you know what documents you need?</div>
         </div>
       </div>
 
+      <!-- Step 3: Operator says analyze -->
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#d2d2d7;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6e6e73;">E</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">Erik <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:05 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;">Analyze it.</div>
+        </div>
+      </div>
+
+      <!-- Step 4: @credit delivers analysis bureau by bureau -->
+      <div style="display:flex;gap:12px;margin-bottom:18px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:#4338CA;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">@c</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">@credit <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:06 AM</span></div>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">
+            <strong style="color:#1d1d1f;">TransUnion:</strong> 2 collections ($2,400 medical — 2021, $780 utility — 2022), 1 late payment (Cap One — 30 days, 2023).<br>
+            <strong style="color:#1d1d1f;">Equifax:</strong> Same 2 collections. No late payments.<br>
+            <strong style="color:#1d1d1f;">Experian:</strong> Clean.<br><br>
+            Goal on file: mortgage qualification. Timeline: 6 months.<br><br>
+            Based on this I'd recommend generating:<br>
+            — 609 Letter (TU) — medical collection<br>
+            — 609 Letter (EQ) — medical collection<br>
+            — CFPB Complaint — §623 failure to verify<br>
+            — Cap One Late Dispute — within 24-month window<br><br>
+            Generate all four, or pick which ones you want?
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Operator confirms -->
       <div style="display:flex;gap:12px;margin-bottom:18px;">
         <div style="width:32px;height:32px;border-radius:8px;background:#d2d2d7;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6e6e73;">E</div>
         <div>
           <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">Erik <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:06 AM</span></div>
-          <div style="font-size:13px;color:#3c3c43;">Yes, generate all four.</div>
+          <div style="font-size:13px;color:#3c3c43;">Generate all four.</div>
         </div>
       </div>
 
+      <!-- Step 6: @credit delivers documents -->
       <div style="display:flex;gap:12px;">
         <div style="width:32px;height:32px;border-radius:8px;background:#4338CA;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">@c</div>
         <div>
           <div style="font-size:12px;font-weight:700;color:#1d1d1f;margin-bottom:4px;">@credit <span style="font-size:11px;font-weight:400;color:#aeaeb2;">9:06 AM</span></div>
-          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">Done. Four documents generated for Marcus Johnson and logged to his case file.<br><br>
+          <div style="font-size:13px;color:#3c3c43;line-height:1.7;">Done. All four generated and logged to Marcus Johnson's case file.<br><br>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
               <span style="background:#fff;border:1px solid #e5e5ea;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#1d1d1f;">📄 609 Letter — TU Medical</span>
               <span style="background:#fff;border:1px solid #e5e5ea;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#1d1d1f;">📄 609 Letter — EQ Medical</span>
