@@ -17,28 +17,43 @@ body {
   line-height: 1.6;
 }
 
-.page { max-width: 900px; margin: 0 auto; padding: 0 32px 100px; }
+.page { max-width: 960px; margin: 0 auto; padding: 0 32px 120px; }
 
-/* ── HEADER ── */
+/* ─── HEADER ─── */
 .doc-header {
-  background: #fff;
-  border-radius: 0 0 20px 20px;
-  padding: 56px 64px 48px;
+  background: #1d1d1f;
+  border-radius: 0 0 28px 28px;
+  padding: 64px 72px 56px;
   margin-bottom: 32px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-bg-line {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 40px,
+    rgba(67,56,202,0.06) 40px,
+    rgba(67,56,202,0.06) 41px
+  );
+  pointer-events: none;
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
+  position: relative;
 }
 
 .brand {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: #4338CA;
 }
@@ -48,19 +63,20 @@ body {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #fff;
-  background: #4338CA;
-  padding: 5px 12px;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 5px 14px;
   border-radius: 20px;
 }
 
 .doc-title {
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 800;
-  letter-spacing: -2.5px;
-  line-height: 0.95;
-  color: #1d1d1f;
-  margin-bottom: 20px;
+  letter-spacing: -3px;
+  line-height: 0.92;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
 }
 
 .doc-title em {
@@ -69,63 +85,216 @@ body {
 }
 
 .doc-sub {
-  font-size: 16px;
-  color: #6e6e73;
-  line-height: 1.6;
-  max-width: 560px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 520px;
+  position: relative;
 }
 
-/* ── SECTION LABEL ── */
-.section-label {
+/* ─── FLOW STEPS BAR ─── */
+.flow-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 36px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  gap: 0;
+  overflow: hidden;
+}
+
+.flow-bar-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.flow-bar-step:not(:last-child)::after {
+  content: '';
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: #e8e8ed;
+  margin: 0 16px;
+}
+
+.fbs-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f5f5f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fbs-icon svg { width: 16px; height: 16px; }
+
+.fbs-icon.active { background: #4338CA; }
+.fbs-icon.active svg path, .fbs-icon.active svg rect, .fbs-icon.active svg circle { stroke: #fff; }
+
+.fbs-text {}
+.fbs-num { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #aeaeb2; }
+.fbs-label { font-size: 13px; font-weight: 600; color: #1d1d1f; }
+
+/* ─── SECTION HEADER ─── */
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sec-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #4338CA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sec-icon svg { width: 18px; height: 18px; }
+
+.sec-label {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #aeaeb2;
-  margin-bottom: 16px;
-  display: block;
 }
 
-/* ── SURVEY BLOCK ── */
+.sec-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.4px;
+}
+
+/* ─── SURVEY CARD ─── */
 .survey-card {
   background: #fff;
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 48px 52px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
   margin-bottom: 24px;
 }
 
-.survey-title {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: #1d1d1f;
-  margin-bottom: 8px;
+.survey-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: #f0f0f2;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 40px;
 }
 
-.survey-note {
-  font-size: 13px;
-  color: #aeaeb2;
-  margin-bottom: 32px;
+.survey-stat {
+  background: #f5f5f7;
+  padding: 20px 24px;
+  text-align: center;
 }
 
-.questions {
+.survey-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #4338CA;
+  margin-bottom: 2px;
+}
+
+.survey-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6e6e73;
+  letter-spacing: 0.3px;
+}
+
+/* ─── SURVEY SECTIONS ─── */
+.survey-section {
+  margin-bottom: 36px;
+}
+
+.survey-section:last-child { margin-bottom: 0; }
+
+.survey-section-header {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f2;
+  margin-bottom: 20px;
 }
+
+.ss-letter {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #4338CA;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+
+.ss-letter.cinderella { background: #1d1d1f; }
+
+.ss-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.2px;
+}
+
+.ss-note {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: #eef2ff;
+  color: #4338CA;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.ss-note.dark {
+  background: #1d1d1f;
+  color: #fff;
+}
+
+/* ─── QUESTIONS ─── */
+.questions { display: flex; flex-direction: column; gap: 12px; }
 
 .question {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #f9f9fb;
+  border-radius: 12px;
+  transition: background 0.2s;
 }
 
+.question:hover { background: #f0f0f5; }
+
 .q-num {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #f5f5f7;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e8e8ed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,122 +302,26 @@ body {
   font-weight: 700;
   color: #4338CA;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
-.q-body {
-  flex: 1;
-}
+.q-body { flex: 1; }
 
 .q-text {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #1d1d1f;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  letter-spacing: -0.2px;
 }
 
 .q-options {
-  font-size: 13px;
+  font-size: 12px;
   color: #6e6e73;
+  line-height: 1.5;
 }
 
-/* ── FLOW STEPS ── */
-.flow-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-bottom: 24px;
-}
-
-.flow-step {
-  display: flex;
-  gap: 20px;
-  position: relative;
-}
-
-.flow-step:not(:last-child) .step-line {
-  display: block;
-}
-
-.step-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 48px;
-  flex-shrink: 0;
-}
-
-.step-num {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #4338CA;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.step-num.grey {
-  background: #f5f5f7;
-  color: #aeaeb2;
-}
-
-.step-line {
-  width: 2px;
-  flex: 1;
-  background: #e8e8ed;
-  min-height: 32px;
-  display: none;
-}
-
-.step-content {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px 28px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-  flex: 1;
-  margin-bottom: 12px;
-}
-
-.step-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #1d1d1f;
-  letter-spacing: -0.3px;
-  margin-bottom: 6px;
-}
-
-.step-body {
-  font-size: 14px;
-  color: #3c3c43;
-  line-height: 1.7;
-}
-
-.step-body strong {
-  color: #1d1d1f;
-  font-weight: 600;
-}
-
-.step-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #4338CA;
-  background: #eef2ff;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-}
-
-/* ── SPLIT LANES ── */
+/* ─── ROUTING LANES ─── */
 .lanes {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -260,15 +333,35 @@ body {
   background: #fff;
   border-radius: 20px;
   padding: 36px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
 }
+
+.lane-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.lane-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lane-icon.green { background: #e8fff0; }
+.lane-icon.amber { background: #fff4e0; }
+.lane-icon svg { width: 20px; height: 20px; }
 
 .lane-label {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.8px;
   text-transform: uppercase;
-  margin-bottom: 12px;
 }
 
 .lane-label.green { color: #34c759; }
@@ -283,17 +376,14 @@ body {
 }
 
 .lane-body {
-  font-size: 14px;
-  color: #3c3c43;
+  font-size: 13px;
+  color: #6e6e73;
   line-height: 1.75;
 }
 
-.lane-body strong {
-  color: #1d1d1f;
-  font-weight: 600;
-}
+.lane-body strong { color: #1d1d1f; font-weight: 600; }
 
-/* ── FINANCING OPTIONS ── */
+/* ─── FINANCING CARDS ─── */
 .financing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -303,10 +393,38 @@ body {
 
 .finance-card {
   background: #fff;
-  border-radius: 16px;
-  padding: 28px 24px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
 }
+
+.finance-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.finance-card.f1::before { background: #34c759; }
+.finance-card.f2::before { background: #ff9f0a; }
+.finance-card.f3::before { background: #aeaeb2; }
+
+.finance-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finance-icon.f1 { background: #e8fff0; }
+.finance-icon.f2 { background: #fff4e0; }
+.finance-icon.f3 { background: #f5f5f7; }
+.finance-icon svg { width: 22px; height: 22px; }
 
 .finance-rank {
   font-size: 10px;
@@ -314,190 +432,305 @@ body {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #aeaeb2;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .finance-name {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
   color: #1d1d1f;
-  letter-spacing: -0.3px;
-  margin-bottom: 8px;
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
 }
 
 .finance-body {
   font-size: 13px;
   color: #6e6e73;
   line-height: 1.7;
+  margin-bottom: 16px;
 }
 
-.finance-tag {
-  display: inline-block;
-  margin-top: 12px;
+.finance-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
 }
 
-.finance-tag.best { background: #e8fff0; color: #34c759; }
-.finance-tag.mid  { background: #fff4e0; color: #ff9f0a; }
-.finance-tag.last { background: #f5f5f7; color: #aeaeb2; }
+.finance-pill.f1 { background: #e8fff0; color: #34c759; }
+.finance-pill.f2 { background: #fff4e0; color: #ff9f0a; }
+.finance-pill.f3 { background: #f5f5f7; color: #6e6e73; }
 
-/* ── DEAD LEAD ── */
-.dead-card {
+/* ─── NURTURE CARD ─── */
+.nurture-card {
   background: #fff;
-  border-radius: 16px;
-  padding: 28px 32px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-  margin-bottom: 24px;
+  border-radius: 20px;
+  padding: 32px 36px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
   display: flex;
   gap: 20px;
-  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
-.dead-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.nurture-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   background: #f5f5f7;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
   flex-shrink: 0;
 }
 
-.dead-title {
+.nurture-icon svg { width: 22px; height: 22px; }
+
+.nurture-title {
   font-size: 15px;
   font-weight: 700;
   color: #1d1d1f;
   margin-bottom: 4px;
 }
 
-.dead-body {
+.nurture-body {
+  font-size: 13px;
+  color: #6e6e73;
+  line-height: 1.65;
+}
+
+/* ─── PROFILE CARD ─── */
+.profile-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 44px 52px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #f0f0f2;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 28px;
+}
+
+.profile-item {
+  background: #f9f9fb;
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.profile-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.profile-item-icon svg { width: 12px; height: 12px; }
+
+.profile-item-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #aeaeb2;
+  margin-bottom: 2px;
+}
+
+.profile-item-value {
+  font-size: 13px;
+  color: #1d1d1f;
+  font-weight: 500;
+}
+
+/* ─── ROTATION CARD ─── */
+.rotation-card {
+  background: #1d1d1f;
+  border-radius: 24px;
+  padding: 48px 52px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.rotation-card-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 40px,
+    rgba(67,56,202,0.08) 40px,
+    rgba(67,56,202,0.08) 41px
+  );
+  pointer-events: none;
+}
+
+.rotation-inner {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.rotation-text { flex: 1; }
+
+.rotation-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4338CA;
+  margin-bottom: 12px;
+}
+
+.rotation-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.rotation-body {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+}
+
+.rotation-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.rotation-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.r-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+}
+
+.r-dot.active {
+  background: #4338CA;
+  border-color: #4338CA;
+  color: #fff;
+}
+
+.r-arrow {
+  width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── OUTCOME CARD ─── */
+.outcome-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 44px 52px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+}
+
+.outcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.outcome-item {
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.outcome-item.closed { background: #e8fff0; }
+.outcome-item.open   { background: #f5f5f7; }
+
+.outcome-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.outcome-item.closed .outcome-item-icon { background: #34c759; }
+.outcome-item.open   .outcome-item-icon { background: #e8e8ed; }
+.outcome-item-icon svg { width: 18px; height: 18px; }
+
+.outcome-item-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 6px;
+}
+
+.outcome-item-body {
   font-size: 13px;
   color: #6e6e73;
   line-height: 1.7;
 }
 
-/* ── MEMBER PROFILE BLOCK ── */
-.profile-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px 48px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-  margin-bottom: 24px;
-}
-
-.profile-title {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  color: #1d1d1f;
-  margin-bottom: 20px;
-}
-
-.profile-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-}
-
-.profile-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.profile-item-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #aeaeb2;
-}
-
-.profile-item-value {
-  font-size: 13px;
-  color: #3c3c43;
-  font-weight: 500;
-}
-
-/* ── RULE CARD ── */
-.rule-card {
-  background: #4338CA;
-  border-radius: 20px;
-  padding: 40px 48px;
-  margin-bottom: 24px;
-}
-
-.rule-card .rule-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 12px;
-}
-
-.rule-card .rule-text {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.5;
-  letter-spacing: -0.3px;
-}
-
-/* ── FOOTER ── */
+/* ─── FOOTER ─── */
 .doc-footer {
-  margin-top: 48px;
+  margin-top: 52px;
   padding-top: 24px;
   border-top: 1px solid #e8e8ed;
   display: flex;
   justify-content: space-between;
-}
-
-.doc-footer span {
-  font-size: 11px;
-  color: #c7c7cc;
-  font-weight: 500;
-}
-
-/* ── SURVEY SECTION LABELS ── */
-.survey-section-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: #4338CA;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #f0f0f2;
-  display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-.cinderella-tag {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  background: #eef2ff;
-  color: #4338CA;
-  padding: 3px 8px;
-  border-radius: 20px;
-}
+.doc-footer span { font-size: 11px; color: #c7c7cc; font-weight: 500; }
 
-@media (max-width: 680px) {
+/* ─── SPACING UTILS ─── */
+.mb-24 { margin-bottom: 24px; }
+.mb-16 { margin-bottom: 16px; }
+
+@media (max-width: 700px) {
   .lanes { grid-template-columns: 1fr; }
   .financing-grid { grid-template-columns: 1fr; }
   .profile-grid { grid-template-columns: 1fr 1fr; }
+  .outcome-grid { grid-template-columns: 1fr; }
+  .flow-bar { display: none; }
   .doc-header { padding: 40px 28px; }
-  .doc-title { font-size: 36px; }
+  .doc-title { font-size: 38px; }
+  .rotation-inner { flex-direction: column; }
 }
 
 </style>
@@ -506,402 +739,652 @@ body {
 
 <div class="page">
 
-  <!-- HEADER -->
-  <div class="doc-header">
-    <div class="header-top">
-      <span class="brand">The Network</span>
-      <span class="badge">Founding Members</span>
-    </div>
-    <h1 class="doc-title">The <em>Collective</em><br>Lead Flow</h1>
-    <p class="doc-sub">One pool. Ten members. Every lead that comes in through a collective campaign gets qualified, routed, and worked using this structure — no exceptions.</p>
+<!-- ─── HEADER ─── -->
+<div class="doc-header">
+  <div class="header-bg-line"></div>
+  <div class="header-top">
+    <span class="brand">The Network</span>
+    <span class="badge">Founding Members Only</span>
   </div>
+  <h1 class="doc-title">The <em>Collective</em><br>Lead Flow</h1>
+  <p class="doc-sub">One pool. Ten members. Every lead that enters through a collective campaign follows this structure — qualify, route, work, close.</p>
+</div>
 
-  <!-- SURVEY -->
-  <div class="survey-card">
-    <span class="section-label">Step 1 — Qualifier Survey</span>
-    <div class="survey-title">Three Sections. Full Picture.</div>
-    <p class="survey-note">Every lead fills this out before they reach a member. By the time you get them, you already know everything you need. Leads who selected Funding or Both complete all three sections.</p>
+<!-- ─── FLOW BAR ─── -->
+<div class="flow-bar">
 
-    <!-- SECTION A -->
-    <div class="survey-section-label">Section A — Your Credit Situation</div>
-    <div class="questions">
-
-      <div class="question">
-        <div class="q-num">1</div>
-        <div class="q-body">
-          <div class="q-text">What do you need help with?</div>
-          <div class="q-options">Credit · Funding · Both</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">2</div>
-        <div class="q-body">
-          <div class="q-text">What is your approximate credit score?</div>
-          <div class="q-options">Exceptional 800–850 · Very Good 740–799 · Good 670–739 · Fair 580–669 · Poor 300–579 · I don't know</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">3</div>
-        <div class="q-body">
-          <div class="q-text">Do you have any open collections or charge-offs?</div>
-          <div class="q-options">Yes · No · Not sure</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">4</div>
-        <div class="q-body">
-          <div class="q-text">Have you ever filed for bankruptcy?</div>
-          <div class="q-options">Yes · No</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">5</div>
-        <div class="q-body">
-          <div class="q-text">How many negative items are on your credit report?</div>
-          <div class="q-options">1–3 · 4–7 · 8 or more · Not sure</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">6</div>
-        <div class="q-body">
-          <div class="q-text">What is your primary goal?</div>
-          <div class="q-options">Raise my credit score · Remove negative items · Qualify for a mortgage · Get business funding · All of the above</div>
-        </div>
-      </div>
-
+  <div class="flow-bar-step">
+    <div class="fbs-icon active">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2L10 6H14L11 9L12 13L8 11L4 13L5 9L2 6H6L8 2Z" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
     </div>
-
-    <!-- SECTION B -->
-    <div class="survey-section-label" style="margin-top: 32px;">Section B — About You</div>
-    <div class="questions">
-
-      <div class="question">
-        <div class="q-num">7</div>
-        <div class="q-body">
-          <div class="q-text">What is your monthly income?</div>
-          <div class="q-options">Under $2K · $2K–$4K · $4K–$7K · $7K–$10K · $10K+</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">8</div>
-        <div class="q-body">
-          <div class="q-text">What are your total monthly debt obligations?</div>
-          <div class="q-options">Under $500 · $500–$1K · $1K–$2K · $2K–$3.5K · $3.5K+</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">9</div>
-        <div class="q-body">
-          <div class="q-text">What is your employment status?</div>
-          <div class="q-options">Employed (W-2) · Self-employed (1099) · Business owner · Unemployed</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">10</div>
-        <div class="q-body">
-          <div class="q-text">What state are you located in?</div>
-          <div class="q-options">State</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">11</div>
-        <div class="q-body">
-          <div class="q-text">Do you have budget available to invest in this right now?</div>
-          <div class="q-options">Yes, I'm ready · No, I need help with that too</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">12</div>
-        <div class="q-body">
-          <div class="q-text">What is your timeline?</div>
-          <div class="q-options">ASAP · 1–3 months · 3–6 months · Just exploring</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">13</div>
-        <div class="q-body">
-          <div class="q-text">How did you hear about us?</div>
-          <div class="q-options">Social media · Referral · Influencer · Other</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- SECTION C -->
-    <div class="survey-section-label cinderella" style="margin-top: 32px;">Section C — Business &amp; Funding Profile <span class="cinderella-tag">Funding / Both only</span></div>
-    <div class="questions">
-
-      <div class="question">
-        <div class="q-num">14</div>
-        <div class="q-body">
-          <div class="q-text">Do you have a registered business entity?</div>
-          <div class="q-options">Yes · No · In progress</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">15</div>
-        <div class="q-body">
-          <div class="q-text">What type of entity?</div>
-          <div class="q-options">LLC · S-Corp · C-Corp · Sole Proprietor · Other</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">16</div>
-        <div class="q-body">
-          <div class="q-text">How long has the business been established?</div>
-          <div class="q-options">Under 6 months · 6–12 months · 1–2 years · 2+ years</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">17</div>
-        <div class="q-body">
-          <div class="q-text">Do you have an EIN (Employer Identification Number)?</div>
-          <div class="q-options">Yes · No · Not sure what that is</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">18</div>
-        <div class="q-body">
-          <div class="q-text">Do you have a dedicated business bank account?</div>
-          <div class="q-options">Yes · No</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">19</div>
-        <div class="q-body">
-          <div class="q-text">If yes, how long has that account been open?</div>
-          <div class="q-options">Under 3 months · 3–6 months · 6–12 months · 1+ year</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">20</div>
-        <div class="q-body">
-          <div class="q-text">What is your average monthly business revenue?</div>
-          <div class="q-options">$0 (pre-revenue) · $1–$5K · $5K–$10K · $10K–$25K · $25K+</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">21</div>
-        <div class="q-body">
-          <div class="q-text">Do you have a D-U-N-S number?</div>
-          <div class="q-options">Yes · No · What's that?</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">22</div>
-        <div class="q-body">
-          <div class="q-text">Is your business address a commercial address (not a home address)?</div>
-          <div class="q-options">Yes, commercial · No, home address · Virtual office</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">23</div>
-        <div class="q-body">
-          <div class="q-text">Is your business phone number listed in 411 / online directories?</div>
-          <div class="q-options">Yes · No · Not sure</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">24</div>
-        <div class="q-body">
-          <div class="q-text">Do you have a business website?</div>
-          <div class="q-options">Yes · No · In progress</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">25</div>
-        <div class="q-body">
-          <div class="q-text">Do you have any business credit accounts or net-30 trade lines?</div>
-          <div class="q-options">Yes · No · Not sure</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">26</div>
-        <div class="q-body">
-          <div class="q-text">Do you have any business credit cards?</div>
-          <div class="q-options">Yes · No</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">27</div>
-        <div class="q-body">
-          <div class="q-text">How much funding are you looking for?</div>
-          <div class="q-options">$5K–$25K · $25K–$50K · $50K–$100K · $100K–$250K · $250K+</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="q-num">28</div>
-        <div class="q-body">
-          <div class="q-text">What type of funding are you looking for?</div>
-          <div class="q-options">Business line of credit · Term loan · Equipment financing · SBA loan · Not sure yet</div>
-        </div>
-      </div>
-
+    <div class="fbs-text">
+      <div class="fbs-num">01</div>
+      <div class="fbs-label">Qualify</div>
     </div>
   </div>
 
-  <!-- ROUTING -->
-  <div style="margin-bottom: 16px;">
-    <span class="section-label">Step 2 — Routing</span>
-  </div>
-
-  <div class="lanes">
-
-    <div class="lane">
-      <div class="lane-label green">Lane 1 — Has Budget</div>
-      <div class="lane-title">Direct to Member</div>
-      <div class="lane-body">Lead answered yes to budget. They go straight into the rotation. <strong>Next member in line gets the full lead profile automatically.</strong> No delay, no decision, no manual step.</div>
+  <div class="flow-bar-step">
+    <div class="fbs-icon active">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="5.5" stroke="#fff" stroke-width="1.4"/>
+        <path d="M8 5V8L10 10" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
     </div>
-
-    <div class="lane">
-      <div class="lane-label amber">Lane 2 — No Budget</div>
-      <div class="lane-title">Financing Path</div>
-      <div class="lane-body">Lead needs help covering the cost. <strong>Don't drop them.</strong> Based on their credit score and monthly income vs debt, they get routed to the right financing option below.</div>
-    </div>
-
-  </div>
-
-  <!-- FINANCING OPTIONS -->
-  <div style="margin-bottom: 16px;">
-    <span class="section-label">Lane 2 — Financing Options</span>
-  </div>
-
-  <div class="financing-grid">
-
-    <div class="finance-card">
-      <div class="finance-rank">Option 1</div>
-      <div class="finance-name">CoachFinancing</div>
-      <div class="finance-body">Third-party lender covers the service cost. Member gets paid upfront. Client repays the lender in installments. Best outcome for the member — zero risk, immediate payment.</div>
-      <span class="finance-tag best">Member paid upfront</span>
-    </div>
-
-    <div class="finance-card">
-      <div class="finance-rank">Option 2</div>
-      <div class="finance-name">Fanbasis</div>
-      <div class="finance-body">Buy Now Pay Later built into the platform. Client splits the cost into payments without a traditional loan. Score and charge amount determine eligibility.</div>
-      <span class="finance-tag mid">BNPL</span>
-    </div>
-
-    <div class="finance-card">
-      <div class="finance-rank">Option 3</div>
-      <div class="finance-name">Credee</div>
-      <div class="finance-body">Member creates an in-house payment plan directly with the client. Based on what their income vs debt shows they can afford monthly. No third-party approval needed — member assumes the plan.</div>
-      <span class="finance-tag last">In-house plan</span>
-    </div>
-
-  </div>
-
-  <!-- DEAD LEAD -->
-  <div class="dead-card">
-    <div class="dead-icon">⏳</div>
-    <div>
-      <div class="dead-title">Doesn't Qualify for Any Path</div>
-      <div class="dead-body">If the income vs debt math doesn't support any payment structure right now, the lead is not dropped — they go into a future follow-up sequence. No hard no. Timing is the only issue.</div>
+    <div class="fbs-text">
+      <div class="fbs-num">02</div>
+      <div class="fbs-label">Route</div>
     </div>
   </div>
 
-  <!-- LEAD PROFILE -->
-  <div class="profile-card">
-    <span class="section-label">Step 3 — What the Member Receives</span>
-    <div class="profile-title">Full Lead Profile — Delivered on Assignment</div>
-    <div class="profile-grid">
-      <div class="profile-item">
-        <span class="profile-item-label">Name + Contact</span>
-        <span class="profile-item-value">Full name, phone, email</span>
-      </div>
-      <div class="profile-item">
-        <span class="profile-item-label">Situation</span>
-        <span class="profile-item-value">Credit / Funding / Both</span>
-      </div>
-      <div class="profile-item">
-        <span class="profile-item-label">Credit Standing</span>
-        <span class="profile-item-value">Good / Fair / Poor</span>
-      </div>
-      <div class="profile-item">
-        <span class="profile-item-label">Monthly Income</span>
-        <span class="profile-item-value">Reported range</span>
-      </div>
-      <div class="profile-item">
-        <span class="profile-item-label">Monthly Debt</span>
-        <span class="profile-item-value">Reported obligations</span>
-      </div>
-      <div class="profile-item">
-        <span class="profile-item-label">Budget Status</span>
-        <span class="profile-item-value">Ready / Financing path</span>
-      </div>
-      <div class="profile-item">
-        <span class="profile-item-label">Focus</span>
-        <span class="profile-item-value">Personal / Business / Both</span>
-      </div>
-      <div class="profile-item">
-        <span class="profile-item-label">Financing Route</span>
-        <span class="profile-item-value">If applicable</span>
-      </div>
+  <div class="flow-bar-step">
+    <div class="fbs-icon active">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="3" width="12" height="10" rx="2" stroke="#fff" stroke-width="1.4"/>
+        <path d="M5 7H11M5 10H8" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="fbs-text">
+      <div class="fbs-num">03</div>
+      <div class="fbs-label">Profile</div>
     </div>
   </div>
 
-  <!-- ROTATION RULE -->
-  <div class="rule-card">
-    <div class="rule-label">The Rotation</div>
-    <div class="rule-text">All 10 members. One pool. Leads rotate in order — no picking, no claiming, no manual assignment. When a lead submits the survey, the next member in rotation gets the profile automatically. Equal distribution, zero delay.</div>
-  </div>
-
-  <!-- OUTCOME -->
-  <div class="survey-card" style="margin-bottom: 0;">
-    <span class="section-label">Step 4 — Outcome</span>
-    <div class="survey-title">Close or Re-Route</div>
-    <p class="survey-note" style="margin-bottom: 24px;">Member works the lead. One of two outcomes.</p>
-
-    <div class="questions">
-      <div class="question">
-        <div class="q-num" style="background:#e8fff0; color:#34c759;">✓</div>
-        <div class="q-body">
-          <div class="q-text">Closed</div>
-          <div class="q-options">Service begins. Member reports what worked back to the brain — script, objection handled, financing option used. That intel feeds the whole group.</div>
-        </div>
-      </div>
-      <div class="question">
-        <div class="q-num" style="background:#f5f5f7; color:#aeaeb2;">→</div>
-        <div class="q-body">
-          <div class="q-text">Not Closed</div>
-          <div class="q-options">Lead re-routes based on credit score and service charge. Thresholds to be defined. Lead does not die — it moves.</div>
-        </div>
-      </div>
+  <div class="flow-bar-step">
+    <div class="fbs-icon active">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 8.5L6.5 12L13 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="doc-footer">
-    <span>The Network — Collective Lead Flow · Founding Members Only</span>
-    <span>April 2026</span>
+    <div class="fbs-text">
+      <div class="fbs-num">04</div>
+      <div class="fbs-label">Close</div>
+    </div>
   </div>
 
 </div>
 
+<!-- ─── SURVEY ─── -->
+<div class="survey-card mb-24">
+
+  <div class="sec-header mb-24">
+    <div class="sec-icon">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 2L11.5 7H16L12.5 10.5L14 15L9 12L4 15L5.5 10.5L2 7H6.5L9 2Z" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="sec-label">Step 01</div>
+      <div class="sec-title">Qualifier Survey</div>
+    </div>
+  </div>
+
+  <div class="survey-intro">
+    <div class="survey-stat">
+      <div class="survey-stat-num">28</div>
+      <div class="survey-stat-label">Questions Total</div>
+    </div>
+    <div class="survey-stat">
+      <div class="survey-stat-num">3</div>
+      <div class="survey-stat-label">Sections</div>
+    </div>
+    <div class="survey-stat">
+      <div class="survey-stat-num">0</div>
+      <div class="survey-stat-label">Surprises on the Call</div>
+    </div>
+  </div>
+
+  <!-- SECTION A -->
+  <div class="survey-section">
+    <div class="survey-section-header">
+      <div class="ss-letter">A</div>
+      <div class="ss-title">Credit Situation</div>
+      <span class="ss-note" style="background:#eef2ff;color:#4338CA;">Everyone</span>
+    </div>
+    <div class="questions">
+      <div class="question">
+        <div class="q-num">1</div>
+        <div class="q-body">
+          <div class="q-text">What do you need help with?</div>
+          <div class="q-options">Credit &nbsp;·&nbsp; Funding &nbsp;·&nbsp; Both</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">2</div>
+        <div class="q-body">
+          <div class="q-text">What is your approximate credit score?</div>
+          <div class="q-options">Exceptional 800–850 &nbsp;·&nbsp; Very Good 740–799 &nbsp;·&nbsp; Good 670–739 &nbsp;·&nbsp; Fair 580–669 &nbsp;·&nbsp; Poor 300–579 &nbsp;·&nbsp; I don't know</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">3</div>
+        <div class="q-body">
+          <div class="q-text">Do you have any open collections or charge-offs?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No &nbsp;·&nbsp; Not sure</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">4</div>
+        <div class="q-body">
+          <div class="q-text">Have you ever filed for bankruptcy?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">5</div>
+        <div class="q-body">
+          <div class="q-text">How many negative items are on your credit report?</div>
+          <div class="q-options">1–3 &nbsp;·&nbsp; 4–7 &nbsp;·&nbsp; 8 or more &nbsp;·&nbsp; Not sure</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">6</div>
+        <div class="q-body">
+          <div class="q-text">What is your primary goal?</div>
+          <div class="q-options">Raise my credit score &nbsp;·&nbsp; Remove negative items &nbsp;·&nbsp; Qualify for a mortgage &nbsp;·&nbsp; Get business funding &nbsp;·&nbsp; All of the above</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION B -->
+  <div class="survey-section">
+    <div class="survey-section-header">
+      <div class="ss-letter">B</div>
+      <div class="ss-title">About You</div>
+      <span class="ss-note" style="background:#eef2ff;color:#4338CA;">Everyone</span>
+    </div>
+    <div class="questions">
+      <div class="question">
+        <div class="q-num">7</div>
+        <div class="q-body">
+          <div class="q-text">What is your monthly income?</div>
+          <div class="q-options">Under $2K &nbsp;·&nbsp; $2K–$4K &nbsp;·&nbsp; $4K–$7K &nbsp;·&nbsp; $7K–$10K &nbsp;·&nbsp; $10K+</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">8</div>
+        <div class="q-body">
+          <div class="q-text">What are your total monthly debt obligations?</div>
+          <div class="q-options">Under $500 &nbsp;·&nbsp; $500–$1K &nbsp;·&nbsp; $1K–$2K &nbsp;·&nbsp; $2K–$3.5K &nbsp;·&nbsp; $3.5K+</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">9</div>
+        <div class="q-body">
+          <div class="q-text">What is your employment status?</div>
+          <div class="q-options">Employed (W-2) &nbsp;·&nbsp; Self-employed (1099) &nbsp;·&nbsp; Business owner &nbsp;·&nbsp; Unemployed</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">10</div>
+        <div class="q-body">
+          <div class="q-text">What state are you located in?</div>
+          <div class="q-options">State selection</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">11</div>
+        <div class="q-body">
+          <div class="q-text">Do you have budget available to invest in this right now?</div>
+          <div class="q-options">Yes, I'm ready &nbsp;·&nbsp; No, I need help with that too</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">12</div>
+        <div class="q-body">
+          <div class="q-text">What is your timeline?</div>
+          <div class="q-options">ASAP &nbsp;·&nbsp; 1–3 months &nbsp;·&nbsp; 3–6 months &nbsp;·&nbsp; Just exploring</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">13</div>
+        <div class="q-body">
+          <div class="q-text">How did you hear about us?</div>
+          <div class="q-options">Social media &nbsp;·&nbsp; Referral &nbsp;·&nbsp; Influencer &nbsp;·&nbsp; Other</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION C -->
+  <div class="survey-section">
+    <div class="survey-section-header">
+      <div class="ss-letter cinderella">C</div>
+      <div class="ss-title">Business &amp; Funding — Cinderella Profile</div>
+      <span class="ss-note dark">Funding / Both</span>
+    </div>
+    <div class="questions">
+      <div class="question">
+        <div class="q-num">14</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a registered business entity?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No &nbsp;·&nbsp; In progress</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">15</div>
+        <div class="q-body">
+          <div class="q-text">What type of entity?</div>
+          <div class="q-options">LLC &nbsp;·&nbsp; S-Corp &nbsp;·&nbsp; C-Corp &nbsp;·&nbsp; Sole Proprietor &nbsp;·&nbsp; Other</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">16</div>
+        <div class="q-body">
+          <div class="q-text">How long has the business been established?</div>
+          <div class="q-options">Under 6 months &nbsp;·&nbsp; 6–12 months &nbsp;·&nbsp; 1–2 years &nbsp;·&nbsp; 2+ years</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">17</div>
+        <div class="q-body">
+          <div class="q-text">Do you have an EIN (Employer Identification Number)?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No &nbsp;·&nbsp; Not sure what that is</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">18</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a dedicated business bank account?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">19</div>
+        <div class="q-body">
+          <div class="q-text">If yes — how long has that account been open?</div>
+          <div class="q-options">Under 3 months &nbsp;·&nbsp; 3–6 months &nbsp;·&nbsp; 6–12 months &nbsp;·&nbsp; 1+ year</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">20</div>
+        <div class="q-body">
+          <div class="q-text">What is your average monthly business revenue?</div>
+          <div class="q-options">$0 (pre-revenue) &nbsp;·&nbsp; $1K–$5K &nbsp;·&nbsp; $5K–$10K &nbsp;·&nbsp; $10K–$25K &nbsp;·&nbsp; $25K+</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">21</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a D-U-N-S number?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No &nbsp;·&nbsp; What's that?</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">22</div>
+        <div class="q-body">
+          <div class="q-text">Is your business address a commercial address (not a home address)?</div>
+          <div class="q-options">Yes, commercial &nbsp;·&nbsp; No, home address &nbsp;·&nbsp; Virtual office</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">23</div>
+        <div class="q-body">
+          <div class="q-text">Is your business phone listed in 411 / online directories?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No &nbsp;·&nbsp; Not sure</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">24</div>
+        <div class="q-body">
+          <div class="q-text">Do you have a business website?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No &nbsp;·&nbsp; In progress</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">25</div>
+        <div class="q-body">
+          <div class="q-text">Do you have any business credit accounts or net-30 trade lines?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No &nbsp;·&nbsp; Not sure</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">26</div>
+        <div class="q-body">
+          <div class="q-text">Do you have any business credit cards?</div>
+          <div class="q-options">Yes &nbsp;·&nbsp; No</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">27</div>
+        <div class="q-body">
+          <div class="q-text">How much funding are you looking for?</div>
+          <div class="q-options">$5K–$25K &nbsp;·&nbsp; $25K–$50K &nbsp;·&nbsp; $50K–$100K &nbsp;·&nbsp; $100K–$250K &nbsp;·&nbsp; $250K+</div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="q-num">28</div>
+        <div class="q-body">
+          <div class="q-text">What type of funding are you looking for?</div>
+          <div class="q-options">Business line of credit &nbsp;·&nbsp; Term loan &nbsp;·&nbsp; Equipment financing &nbsp;·&nbsp; SBA loan &nbsp;·&nbsp; Not sure yet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── ROUTING ─── -->
+<div class="sec-header mb-16">
+  <div class="sec-icon">
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 9H15M15 9L11 5M15 9L11 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div>
+    <div class="sec-label">Step 02</div>
+    <div class="sec-title">Routing — Budget Determines the Lane</div>
+  </div>
+</div>
+
+<div class="lanes mb-24">
+  <div class="lane">
+    <div class="lane-top">
+      <div class="lane-icon green">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 10L8.5 14.5L16 6" stroke="#34c759" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="lane-label green">Lane 1</div>
+        <div style="font-size:13px;font-weight:600;color:#1d1d1f;">Has Budget</div>
+      </div>
+    </div>
+    <div class="lane-title">Direct to Member</div>
+    <div class="lane-body">Lead answered yes to budget. They enter the rotation immediately. <strong>Next member in line gets the full profile automatically.</strong> No delay, no human decision, no manual step.</div>
+  </div>
+
+  <div class="lane">
+    <div class="lane-top">
+      <div class="lane-icon amber">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="7" stroke="#ff9f0a" stroke-width="1.6"/>
+          <path d="M10 6V10.5" stroke="#ff9f0a" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="10" cy="13" r="0.8" fill="#ff9f0a"/>
+        </svg>
+      </div>
+      <div>
+        <div class="lane-label amber">Lane 2</div>
+        <div style="font-size:13px;font-weight:600;color:#1d1d1f;">No Budget</div>
+      </div>
+    </div>
+    <div class="lane-title">Financing Path</div>
+    <div class="lane-body">Lead needs help covering the cost. <strong>Don't drop them.</strong> Credit score + income vs debt determines which financing option fits. Three options below — in priority order.</div>
+  </div>
+</div>
+
+<!-- ─── FINANCING ─── -->
+<div class="sec-header mb-16">
+  <div class="sec-icon">
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="5" width="14" height="10" rx="2" stroke="#fff" stroke-width="1.4"/>
+      <path d="M2 8H16" stroke="#fff" stroke-width="1.4"/>
+      <path d="M6 2L6 5M12 2L12 5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div>
+    <div class="sec-label">Lane 2 — Financing Options</div>
+    <div class="sec-title">Score + Income vs Debt Determines the Route</div>
+  </div>
+</div>
+
+<div class="financing-grid mb-24">
+
+  <div class="finance-card f1">
+    <div class="finance-icon f1">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 3L13.5 8.5H19L14.5 12L16 17.5L11 14.5L6 17.5L7.5 12L3 8.5H8.5L11 3Z" stroke="#34c759" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="finance-rank">Option 1 — Best Outcome</div>
+    <div class="finance-name">CoachFinancing</div>
+    <div class="finance-body">Third-party lender covers the cost. Member gets paid upfront. Client repays the lender in installments over time. Zero risk to the member — full payment on day one.</div>
+    <span class="finance-pill f1">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4.5 7.5L8 2.5" stroke="#34c759" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Member Paid Upfront
+    </span>
+  </div>
+
+  <div class="finance-card f2">
+    <div class="finance-icon f2">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="6" width="16" height="12" rx="2" stroke="#ff9f0a" stroke-width="1.4"/>
+        <path d="M3 10H19" stroke="#ff9f0a" stroke-width="1.4"/>
+        <path d="M7 3L7 6M15 3L15 6" stroke="#ff9f0a" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="finance-rank">Option 2</div>
+    <div class="finance-name">Fanbasis</div>
+    <div class="finance-body">Buy Now Pay Later built into the platform. Client splits the service cost into installments without a traditional loan application. Score and charge amount determine eligibility.</div>
+    <span class="finance-pill f2">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3.5" stroke="#ff9f0a" stroke-width="1.2"/></svg>
+      BNPL
+    </span>
+  </div>
+
+  <div class="finance-card f3">
+    <div class="finance-icon f3">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 4V11L15 14" stroke="#aeaeb2" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="11" cy="11" r="8" stroke="#aeaeb2" stroke-width="1.4"/>
+      </svg>
+    </div>
+    <div class="finance-rank">Option 3</div>
+    <div class="finance-name">Credee</div>
+    <div class="finance-body">Member creates an in-house payment plan directly with the client. Based on what monthly income vs debt shows they can afford. No third-party approval — member owns the plan.</div>
+    <span class="finance-pill f3">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L5 2L8 8" stroke="#6e6e73" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      In-House Plan
+    </span>
+  </div>
+
+</div>
+
+<!-- NURTURE -->
+<div class="nurture-card mb-24">
+  <div class="nurture-icon">
+    <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11 4C7.13 4 4 7.13 4 11C4 14.87 7.13 18 11 18C14.87 18 18 14.87 18 11" stroke="#aeaeb2" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M15 4L18 7L15 10" stroke="#aeaeb2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11 8V11.5" stroke="#aeaeb2" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div>
+    <div class="nurture-title">Doesn't Qualify for Any Path — Nurture, Not Dead</div>
+    <div class="nurture-body">If income vs debt doesn't support any payment structure right now, the lead enters a future follow-up sequence. No hard no. Timing is the only situation. They get re-evaluated when their position changes.</div>
+  </div>
+</div>
+
+<!-- ─── ROTATION ─── -->
+<div class="rotation-card mb-24">
+  <div class="rotation-card-bg"></div>
+  <div class="rotation-inner">
+    <div class="rotation-text">
+      <div class="rotation-label">Step 03 — The Rotation</div>
+      <div class="rotation-title">One Pool.<br>Automatic Assignment.</div>
+      <div class="rotation-body">All 10 members. One queue. When a lead submits the survey, the next member in rotation receives their full profile automatically. No picking. No claiming. No delay. Equal distribution across the entire founding group.</div>
+    </div>
+    <div class="rotation-visual">
+      <div class="rotation-row">
+        <div class="r-dot active">R</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">M</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">Ro</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">E</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">D</div>
+      </div>
+      <div class="rotation-row">
+        <div class="r-dot">J</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">G</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">Z</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">Jo</div>
+        <div class="r-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="r-dot">S</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PROFILE ─── -->
+<div class="profile-card mb-24">
+  <div class="sec-header" style="margin-bottom:0;">
+    <div class="sec-icon">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="9" cy="6" r="3" stroke="#fff" stroke-width="1.4"/>
+        <path d="M3 15C3 12.24 5.69 10 9 10C12.31 10 15 12.24 15 15" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="sec-label">Delivered on Assignment</div>
+      <div class="sec-title">What Every Member Receives</div>
+    </div>
+  </div>
+  <div class="profile-grid">
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="4" r="2" stroke="#4338CA" stroke-width="1.2"/>
+          <path d="M2 10C2 8.34 3.79 7 6 7C8.21 7 10 8.34 10 10" stroke="#4338CA" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Name + Contact</div>
+        <div class="profile-item-value">Full name, phone, email</div>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 2L7.5 5H11L8.5 7L9.5 10.5L6 8.5L2.5 10.5L3.5 7L1 5H4.5L6 2Z" stroke="#4338CA" stroke-width="1.1" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Credit Score</div>
+        <div class="profile-item-value">FICO range reported</div>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1.5" y="3" width="9" height="7" rx="1.5" stroke="#4338CA" stroke-width="1.2"/>
+          <path d="M3.5 6H8.5M3.5 8H6" stroke="#4338CA" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Situation</div>
+        <div class="profile-item-value">Credit / Funding / Both</div>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="6" r="4.5" stroke="#4338CA" stroke-width="1.2"/>
+          <path d="M6 3.5V6L7.5 7.5" stroke="#4338CA" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Timeline</div>
+        <div class="profile-item-value">Urgency level</div>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 9V4L6 2L10 4V9L6 11L2 9Z" stroke="#4338CA" stroke-width="1.1" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Income vs Debt</div>
+        <div class="profile-item-value">Monthly ranges</div>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 4H10M2 7H7" stroke="#4338CA" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="9.5" cy="8.5" r="1.5" fill="#4338CA"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Budget Status</div>
+        <div class="profile-item-value">Ready or financing route</div>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="8" height="8" rx="1.5" stroke="#4338CA" stroke-width="1.2"/>
+          <path d="M4 5.5H8M4 7.5H6.5" stroke="#4338CA" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Negative Items</div>
+        <div class="profile-item-value">Count + type</div>
+      </div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-item-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 9L5 3L8 7L9.5 5L11 9H2Z" stroke="#4338CA" stroke-width="1.1" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="profile-item-label">Business Profile</div>
+        <div class="profile-item-value">Full Cinderella data</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── OUTCOME ─── -->
+<div class="outcome-card">
+  <div class="sec-header" style="margin-bottom:0;">
+    <div class="sec-icon">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 9L7.5 13.5L15 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="sec-label">Step 04</div>
+      <div class="sec-title">Outcome — Close or Re-Route</div>
+    </div>
+  </div>
+  <div class="outcome-grid">
+    <div class="outcome-item closed">
+      <div class="outcome-item-icon">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.5 9L7.5 13L14.5 5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="outcome-item-title">Closed</div>
+      <div class="outcome-item-body">Service begins. Member reports back to the brain — what worked, what objection was handled, which financing option was used. That intel feeds the entire group.</div>
+    </div>
+    <div class="outcome-item open">
+      <div class="outcome-item-icon">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="#6e6e73" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="outcome-item-title">Not Closed</div>
+      <div class="outcome-item-body">Lead re-routes based on credit score and service charge thresholds. Lead does not die — it moves. Thresholds to be defined and seeded into the brain.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span>The Network — Collective Lead Flow · Founding Members Only</span>
+  <span>April 2026</span>
+</div>
+
+</div>
 </body>
 </html>
